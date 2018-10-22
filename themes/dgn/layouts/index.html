@@ -1,0 +1,29 @@
+{{ partial "header.html" . }}
+<div class="front-main column">
+    <div class="container">
+        <section class="content">
+            {{ range where .Data.Pages "Title" "Home" }}
+                <div class="markdown">
+                    {{ .Content }}
+                </div>
+            {{ end }}
+        </section>
+    </div>
+    <div class="feed">
+    {{ $nbPosts := len (where .Data.Pages "Section" "dead") }}
+    {{ if gt $nbPosts 0 }}
+        <section id="dead">
+            <h1>Dead games</h1><br>
+            {{ range (where .Pages "Section" "dead").GroupByPublishDate "" }}
+                {{ range sort .Pages "Date" "desc" }}
+                    <article class="post-item">
+                        <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+                        {{ .Content }}
+                    </article>
+                {{ end }}
+            {{ end }}
+        </section>
+    {{ end }}
+    </div>
+</div>
+{{ partial "footer.html" . }}

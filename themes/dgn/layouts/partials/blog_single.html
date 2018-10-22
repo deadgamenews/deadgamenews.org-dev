@@ -1,0 +1,87 @@
+{{- $contentperline := split (.Content) "\n"}}
+<div class="main post column">
+    <div class="content {{if findRE "<img.*>" .Content }}has-img-content{{end}}">
+        <main>
+            <h1 class="page-heading">
+                {{ .Title }}{{ with .PublishDate }}<time {{if $.Page.Params.nomonth}}{{else}}title="{{.Month}}{{if $.Params.nodate}}{{else}} {{.Day}},{{end}} {{.Year}}"{{end}} datetime="{{if $.Params.nomonth}}{{.Format "2006"}}{{else}}{{.Format "2006-01-02T15:04:05Z07:00"}}{{end}}">, {{ .Format "2006" }}</time>{{else}}<time {{if .Params.nomonth}}{{else}}title="{{.Date.Month}}{{if .Params.nodate}}{{else}} {{.Date.Day}},{{end}} {{.Date.Year}}"{{end}} datetime="{{if .Params.nomonth}}{{.Date.Format "2006"}}{{else}}{{.Date.Format "2006-01-02T15:04:05Z07:00"}}{{end}}">, {{ .Date.Format "2006" }}</time>{{end}}
+            </h1>
+            {{- if findRE "<img.*>" .Content }}
+                <div class="markdown desc">
+                    {{- range first 1 $contentperline}}
+                        {{- .|safeHTML}}
+                    {{- end}}
+                </div>
+            {{- end}}
+            {{- if findRE "<img.*>" .Content }}
+                <div class="markdown has-img">
+                    {{- range after 1 $contentperline}}
+                        {{replaceRE "<p>([A-Za-z0-9])" "<p class='text'>$1" . | safeHTML }}
+                    {{- end}}
+                </div>
+            {{- else}}
+                <div class="markdown">
+                    {{ .Content }}
+                </div>
+            {{- end}}
+        </main>
+        {{- $nbPosts := len (where .Site.Pages "Section" "projects") -}}
+        {{- if gt $nbPosts 0 -}}
+        {{- $pagetitle := .Title -}}
+        <section class="posts other-projects">
+                {{-  range (where .Site.Pages "Section" "projects").GroupByDate "" -}}
+                    {{-  range first 1 (sort .Pages "Date" "desc") -}}
+                        <h2>
+                            <a href="/{{ T "projects" }}"><span>{{T "other"}}</span></a>
+                        </h2>
+                    {{- end -}}
+            <ul id="projects">
+                    {{-  range sort .Pages "Date" "desc" -}}
+                        {{ if ne (lower .Title) (lower (T "projects")) }}{{if (ne .Title $pagetitle) }}
+                            <li class="post-item">
+                                <a href="{{ .Permalink }}"><span>{{ .Title }}</span></a>
+                            </li>
+                        {{- end -}}{{- end -}}
+                    {{-  end -}}
+                {{-  end -}}
+            </ul>
+        </section>
+
+{{-  end -}}
+    </div>
+</div>
+<div class="pswp" tabindex="-1" role="dialog" hidden>
+    <div class="pswp__bg"></div>
+    <div class="pswp__scroll-wrap">
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>

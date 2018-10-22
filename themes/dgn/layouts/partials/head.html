@@ -1,0 +1,9 @@
+<head>
+<meta charset="utf-8">
+<title>
+    {{with .Title}}{{.}}{{else}}{{.Site.Title}}{{end}}
+</title>
+{{ partial "meta.html" . }}
+<link rel="canonical" href="{{ .Permalink }}">
+{{ partial "head_includes.html" . }}
+</head>

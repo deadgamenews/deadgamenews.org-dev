@@ -1,0 +1,35 @@
+baseurl = "https://deadgamenews.org/"
+theme = "dgn"
+builddrafts = true
+canonifyurls = true
+contentdir = "content"
+defaultcontentlanguage = "en"
+languageCode = "et"
+layoutdir = "layouts"
+publishdir = "public"
+title = "Dead Game News"
+author = ""
+pluralizelisttitles = false
+
+[params]
+dateform = "Jan 2, 2006"
+dateformfull = "Mon Jan 2 2006 15:04:05 MST"
+description = "Raising awareness against the practice of companies killing games permanently."
+usesmallsummarycard = true
+posts_navigation = true
+small_banner_logo = false
+disablefancyfonts = true
+
+[params.colors]
+identifier = "#fff"
+identifier_visited = "#f4f4f4"
+identifier_hover = "#ccc"
+trivial = "#dcddde"
+foreground = "#dcddde"
+background = "#111115"
+background_dark = "#090905"
+code = "#87a5d2"
+type = "#97d28b"
+special = "#ffcb8d"
+value = "#96c2d7"
+statement = "#ff8e91"

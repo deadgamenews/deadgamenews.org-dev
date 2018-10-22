@@ -1,0 +1,19 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="HandheldFriendly" content="True">
+<link rel="shortcut icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="shortcut icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<meta name="description" content="{{ with .Page.Params.description }}{{.}}{{ else }}{{ T "description" }}{{ end }}">
+<meta property="og:site_name" content="{{ .Site.Title }}" />
+<meta property="og:url" content="{{ .Permalink }}" />
+<meta property="og:title" content="{{ .Title }}" />
+<meta property="twitter:title" content="{{ if .Title }}{{ .Title }}{{ else }}{{ .Site.Title }}{{ end }}">
+{{ if .Site.Params.social_banner }}
+    <meta property="og:image" content="{{ if .Params.meta_img }}{{ .Site.BaseURL }}{{ .Params.meta_img }}{{ else }}{{ .Site.BaseURL }}{{.Site.Params.social_banner}}{{ end }}">
+    <meta property="twitter:card" content="{{ if .Site.Params.usesmallsummarycard }}summary{{ else }}summary_large_image{{ end }}">
+    <meta property="twitter:image" content="{{ if .Params.meta_img }}{{ .Site.BaseURL }}{{ .Params.meta_img }}{{ else }}{{ .Site.BaseURL }}{{.Site.Params.social_banner}}{{ end }}">
+{{ else }}
+    <meta property="twitter:card" content="summary">
+{{ end }}
+<meta property="og:description" content="{{ with .Page.Params.description }}{{.}}{{ else }}{{ T "description" }}{{ end }}">
+<meta property="twitter:description" content="{{ with .Page.Params.description }}{{.}}{{ else }}{{ T "description" }}{{ end }}">
+<script type="application/ld+json">{"@context":"http:\/\/schema.org","@type":"WebSite","@id":"#website","url":"{{ .Permalink | replaceRE "/" "\\/" }}","name":"{{ if .IsHome }}Dead Game News{{else}}{{.Title}}{{end}}"}</script>

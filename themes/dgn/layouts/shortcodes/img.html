@@ -1,0 +1,53 @@
+{{ $original := .Page.Resources.GetMatch (.Get 0) }}
+{{ $config := imageConfig (printf "content/%s/%s" .Page.Dir $original.Name) }}
+{{ $resolutions := split "320 640 800 1024 1280 1366 1600 1920 1600 3840" " " }}
+{{ $width := .Get 2 }}
+{{ if $width }}
+    {{ $.Scratch.Set "multiplier" (mul (float ($width)) 0.57) }}
+{{ else }}
+    {{ $.Scratch.Set "multiplier" 0.57 }}
+{{ end }}
+{{ with $original }}
+    {{ range $resolutions }}
+        {{ $.Scratch.Set "mult" ($.Scratch.Get "multiplier") }}
+        {{ if lt . 801}}
+            {{ if ($width) }}
+                {{ $.Scratch.Set "mult" (mul (float ($width)) 2) }}
+            {{ else }}
+                {{ $.Scratch.Set "mult" 2 }}
+            {{ end }}
+            {{ $resolution := math.Ceil (mul (int .) (float ($.Scratch.Get "mult"))) }}
+            {{ if ($width) }}
+                {{ $.Scratch.Set "mult" (mul (float ($width)) 1) }}
+            {{ else }}
+                {{ $.Scratch.Set "mult" 1 }}
+            {{ end }}
+            {{ if lt $resolution $config.Width }}
+                {{ $.Scratch.Add "resize" ($original.Resize (printf "%vx q90" $resolution)).Permalink }}
+                {{ $.Scratch.Add "resize" (printf " %vw, \n" $resolution) }}
+            {{end}}
+        {{ end }}
+
+        {{ $resolution := math.Ceil (mul (int .) (float ($.Scratch.Get "mult"))) }}
+        {{ if lt $resolution $config.Width }}
+            {{ $.Scratch.Add "resize" ($original.Resize (printf "%vx q90" $resolution)).Permalink }}
+            {{ $.Scratch.Add "resize" (printf " %vw, \n" $resolution) }}
+        {{end}}
+    {{end}}
+{{end}}
+
+<figure class="img{{if $width}} row-img{{end}}{{with (.Get 3)}} {{.}}{{end}}" {{if $width}}style="width: {{mul (float $width) 100}}vw"{{else}}{{end}}>
+<a href="{{$original.Permalink}}">
+    {{ $base := $.Page.Permalink | replaceRE "([^/]*)/$" "" }}
+    {{ $link := $.Page.RelPermalink | replaceRE "([^/]*)/$" "" }}
+    {{ $file := .Get 0 }}
+    {{ .Scratch.Add "src" $link }}
+    {{ .Scratch.Add "src" $file }}
+    {{ $src := $.Scratch.Get "src"}}
+    {{ $img := $.Scratch.Get "resize" }}
+    <div class="img-inner" style="max-width: {{$config.Width}}px">
+        <img sizes="(max-width: 768px) {{if $width}}{{mul (float $width) 100}}{{else}}100{{end}}vw, {{printf "%.2f" (mul ($.Scratch.Get "multiplier") 100)}}vw"  style="max-width: 100%" srcset="{{range (uniq (split ($.Scratch.Get "resize") "\n")) }}{{.}}{{end}} {{ $original.Permalink }} {{$config.Width}}w" src="{{ $original.Permalink }}" alt="{{.Get 1}}"/>
+    </div>
+</a>
+</figure>
+{{if $width}}{{else}}<p></p>{{end}}

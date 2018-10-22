@@ -1,0 +1,40 @@
+{{ if .Site.Params.fathomurl }}
+<!-- Fathom - simple website analytics - https://github.com/usefathom/fathom -->
+<script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//{{ .Site.Params.fathomurl }}/tracker.js', 'fathom');
+fathom('trackPageview');
+</script>
+<!-- / Fathom -->
+{{ end }}
+<script>
+document.addEventListener("DOMContentLoaded",
+  function() {
+    var div, n,
+      v = document.getElementsByClassName("youtube");
+      f = document.getElementsByClassName("yt-link");
+    for (n = 0; n < v.length; n++) {
+      div = document.createElement("div");
+      div.setAttribute("data-id", v[n].dataset.id);
+      console.log(f[n].innerHTML);
+      div.innerHTML = f[n].innerHTML;
+      div.onclick = labnolIframe;
+      v[n].appendChild(div);
+    }
+  });
+
+function labnolIframe() {
+  var iframe = document.createElement("iframe");
+  iframe.setAttribute("src", "https://www.youtube.com/embed/" + this.dataset.id + "?autoplay=1&rel=0&showinfo=0");
+  iframe.setAttribute("style", "border: 0");
+  iframe.setAttribute("allowfullscreen", "1");
+  this.parentNode.replaceChild(iframe, this);
+}
+</script>

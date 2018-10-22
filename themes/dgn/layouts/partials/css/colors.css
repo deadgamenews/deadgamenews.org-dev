@@ -1,0 +1,38 @@
+.header {
+  position: fixed
+}
+body {
+    background: {{ .Param "colors.background" }}
+}
+
+a, .front-main .mobile-show, h1, time:hover {
+    color: {{ .Param "colors.identifier" }}
+}
+
+a:visited, .front-main .mobile-show:focus {
+    color: {{ .Param "colors.identifier_visited" }}
+}
+
+body, time, .front-main .mobile-show:hover, .header nav ul a:hover {
+    color: {{ .Param "colors.foreground" }}
+}
+
+a:hover {
+  color: {{ .Param "colors.identifier_hover" }}
+}
+
+a {
+  text-decoration: underline
+}
+
+.header nav ul a {
+    color: {{ .Param "colors.trivial" }}
+}
+
+.front-main .container {
+    background-color: {{ .Param "colors.background_dark" }};
+}
+
+.ssk {
+    background-color: {{ .Param "colors.trivial" }}
+}
