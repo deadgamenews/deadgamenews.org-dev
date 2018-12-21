@@ -1,6 +1,6 @@
 {{ partial "header.html" . }}
 <div class="front-main column">
-    <div class="container">
+    <div class="container dark">
         <section class="content">
             {{ range where .Data.Pages "Title" "Home" }}
                 <div class="markdown">
@@ -10,15 +10,22 @@
         </section>
     </div>
     <div class="feed">
-    {{ $nbPosts := len (where .Data.Pages "Section" "dead") }}
+    {{ $nbPosts := len (where .Data.Pages "Section" "games") }}
     {{ if gt $nbPosts 0 }}
         <section id="dead">
-            <h1>Dead games</h1><br>
-            {{ range (where .Pages "Section" "dead").GroupByPublishDate "" }}
+            <h1>Games</h1><br>
+            {{ range (where .Pages "Section" "games").GroupByPublishDate "" }}
                 {{ range sort .Pages "Date" "desc" }}
-                    <article class="post-item">
-                        <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
-                        {{ .Content }}
+                    {{ $thumbnail := "" }}
+                    {{ with .Resources.GetMatch "header.*" }}
+                        {{ $thumbnail = (.Fill "460x215 top").Permalink }}
+                    {{ else }}
+                        {{ $thumbnail = (.Params.Steam | replaceRE ".*app/([0-9]+).*" "https://steamcdn-a.akamaihd.net/steam/apps/$1/header.jpg") }}
+                    {{ end }}
+                    <article class="post-item {{ .Params.Status }}">
+                        <a href="{{ .Permalink }}">
+                            <img src="{{ $thumbnail }}"/>
+                        </a>
                     </article>
                 {{ end }}
             {{ end }}

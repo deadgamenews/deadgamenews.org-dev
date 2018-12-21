@@ -1,6 +1,6 @@
 {{ partial "header.html" . }}
 
-{{ if (eq "dead" .Section) or (eq "at-risk" .Section) or (eq "resurrected" .Section) }}
+{{ if (eq "games" .Section) }}
 {{ partial "blog_single.html" . }}
 {{ else }}
 {{ partial "base_single.html" . }}

@@ -32,6 +32,9 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section, .column {
   display: block;
 }
+* {
+  box-sizing: border-box
+}
 ol, ul {
   list-style: none;
 }
@@ -87,7 +90,12 @@ body {
   display: inline;
   font-size: 1em
 }
-.front-main .container, .front-main .feed {
+.front-main .container {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 773 773'%3E%3Cg fill-rule='evenodd' stroke='%23eee' fill='%23eee'%3E%3Cpath stroke-width='3' d='M385.4.7C341.7.3 271 9.2 228.5 64.5c-53.6 69.9.6 162 .6 162l.2-.7s7.9-30.7-1.4-48.7c-12-23-5.3-48.9-5.3-48.9s7-21.3 7.6-13.9c1.2 14 17.6 59.2 17.8 69.4.2 10.1-1.5 38.1-7.2 52.1a154 154 0 0 0-12.5 52.6c-3.2 29.6 46.4 43.4 46.4 43.4s25.4 4.5 30.5 28c5.1 23.5 27.4 27 27.4 27s25.6 4.6 50 4.6c24.5 0 47.3-4.7 59.6-11 12.3-6.4 14-21 14-21s3.6-15.8 16.3-18.5c33.7-7 56-25.4 56-25.4s9.2-9 10.3-27.3a53.6 53.6 0 0 0-10.2-31.6s-8.6-18.9-10.1-54.5 17-96.9 17-96.9c13 15.1 6.8 58.7 6.8 58.7s1 19.9-6.1 40.8c-7.1 21 2.2 30 2.2 30s23.5-43.9 25.8-80.8C571.9 30 423.7 3.7 423.7 3.7S408.3.9 385.4.7zM448 185a68 68 0 0 1 27.9 6.1s31.7 9.8 23.4 64.5c-8.2 54.8-60.2 31.8-60.2 31.8s-44.3-15.3-29.8-68.6c7.3-26.6 24-33.5 38.7-33.8zm-139 2.8a64.4 64.4 0 0 1 34.6 9c2.3 2.5 20.4 13.5 10 60-9.4 42.3-53.8 40.3-53.8 40.3s-48.7-.2-34.7-66.3c7-33.3 26.3-42.5 44-43zm73 87.2c2.3 0 4.8.8 7.5 2.8 17 12.7 31.4 62 31.4 62S424 356.4 409 357s-26-29-26-29-11.2 39-27.9 28.3c-18.3-11.8 5-57 5-57S369 275 381.8 275z'/%3E%3Cpath stroke-width='2' d='M463.9 541.4a79.8 79.8 0 0 0-47 15.4c-6.6 4.9-38 14.2-55 4.8-26.5-16.3-44.7-18.7-44.7-18.7s-38.9-9.3-64.5 24.7-32.8 64.6-32.8 64.6-7.7 41-8.9 68c-1.2 27 11.6 56 11.6 56s16.3 29.5 42 8C290.6 742.4 304 727 304 727s38.8 36.8 58.6-16.5h44.2a35 35 0 0 0 33 28.3c15.6.8 25.8-11 25.8-11s44.6 55.5 68.1 43c23.6-12.5 23.6-45 23.6-45s3.1-30.2-.5-57.6c-3.6-27.3-15.2-60-15.2-60s-22.7-58.5-66.6-66c-3.6-.5-7.3-.8-11.1-.8zm8.4 35.8h.5a15 15 0 1 1-.5 0zm-171.8 9c11.5 0 10.8 5.9 10.8 5.9l-.2 20.7 20.6.3c5 0 6 4.8 6 16.3 0 11.4-6 10.7-6 10.7h-20.4l-.3 20.4c0 5-4.8 6-16.3 6-11.4 0-10.7-6-10.7-6v-20.3l-20.4-.3c-5 0-6-4.9-6-16.3s6-10.8 6-10.8l20.3.2.3-21c0-4.8 4.9-5.9 16.3-5.9zm138.6 24.6h.5a15 15 0 1 1-.5 0zm67.2 0h.5a15 15 0 1 1-.5 0zm-33.9 33.4a15 15 0 0 1 .4 30h-.5a15 15 0 1 1 .1-30zm-31.2 41.7a20 20 0 0 1 .5 40h-.7a20 20 0 1 1 .2-40zm-111 0a20 20 0 0 1 .5 40h-.7a20 20 0 1 1 .2-40z'/%3E%3Cpath stroke-width='3' d='M248.5 452.9l-51.3 18.5-24.8 10.7c-7.7 3.4-26-7.7-26-7.7-8.4-6.7-24 .8-18 9.6 13.8 20.1 33.9 54.9 44.2 38 9-14.5 12-18 18.6-21.6l73.1-29zM512 455.6l54.3 26.8 25 10.7c7.6 3.4 24.7-3.3 24.7-3.3 8.4-6.8 24 .7 18 9.6-13.8 20-17 55.4-32 42.6-13-10.9-15-16.6-28.2-25.9l-70.1-41.5z'/%3E%3Cpath stroke-width='2' d='M526.4 367.5s-.5-33.8 42.4-43.5c60.8-13.8 45.2-46.5 69.9-49.1 15-1.6 4.6 36.4 4.6 36.4s-2.5 4.6 5.9 8.5c8.4 3.9 10.4 9.7 10.4 9.7s.8 12-10 13.1c-10.9 1.1-19.4-15.6-30.2-11.7l-93 36.6zM499 351.6s-7.5 26.8-7 58c.4 29.8-5.5 35.6-5.5 35.6a217.1 217.1 0 0 1-41.5 43s-28.7 22.5-62.3 22.3c-33.7-.3-86-44.8-86-44.8s-23.2-19.2-24-27c-1-7.7-2.6-50.3-2.6-50.3s-1.4-28.5-7.1-34.9c-5.8-6.4 11.8 4.7 11.8 4.7l8 3.7 3.3 16 2.7 36.2s20.4 52.9 93.9 51.9c73.4-1 89.5-57 89.5-57s4.3-12.3 4.6-33.2c.1-15.2 22.2-24.2 22.2-24.2z'/%3E%3Cpath d='M298.7 387s2.3 2.2 7.6 3.7l-.5 15.5-7-3.1zM311.3 392l10.2 3.2-.6 17-9.6-2.6zM327.8 395l11.9 3.2v20.2l-12.3-2.2zM346.6 399.6l11.9 1.4v21.3l-12.1-2.6zM366.4 402.4h12.2l-.2 24.7-12.3-1.1zM386.2 402.7h13.2V427h-12.9zM311.4 417.7c.1.1 5.4 2.5 9.6 2.5v16s-9.8-5.4-10-6.9c-.3-1.5.4-11.6.4-11.6zM327.8 424l10.7 3.4v17.4l-11-1.7zM346.8 428.8l11.5 2.7v22l-12.2-3.3zM366.5 433.6h13.3v20.8h-13.7zM467.9 386.3s-2.2.9-7.5 2.4l.5 15.4 7-3zM456.2 390.7l-10.2 3.1.6 17 9.6-2.5zM438.9 395.2l-11.7 2.6V418l12.3-2.3zM420.3 399.1l-11.9 1.4v21.3l12.1-2.6z'/%3E%3Cpath stroke-width='1.2' d='M456.2 418.2c-.2.1-3.6 2.3-8.8 3.4l.5 16s8.5-5 8.8-6.7c.3-1.7-.5-12.7-.5-12.7z'/%3E%3Cpath d='M439.7 424l-10.7 3.4.6 18.2 10.4-2.5zM420.7 428.7l-11.6 2.7v22l12.2-3.3zM400 433.7h-13.3v20.8h13.8zM234.2 356.5s0-28.7-36.2-40.4c-30.8-9.9-48.9-34.4-48.9-34.4s-7.5-15.8-23.2 7.5c-17 25.2-13.2 26.3-13.2 26.3s1 13.4 17.4 5 40.9 6.1 40.9 6.1z'/%3E%3C/g%3E%3C/svg%3E%0A");
+  background-repeat: no-repeat;
+  background-position: right
+}
+.front-main .container, .feed {
   padding: 1em 2em
 }
 .header {
@@ -126,7 +134,7 @@ body {
   margin: 0 auto
 }
 .main .content .page-heading {
-  margin: 0;
+  margin: 0 0 .2em 0;
 }
 .main .content .meta {
   margin-bottom: 2em;
@@ -182,8 +190,8 @@ img {
   .front-matter, aside, figcaption, .text, .has-img ol, .has-img ul, .has-img h2, .has-img blockquote {
     display: block;
     float: left;
-    width: 11.5em;
-    margin-left: -13em;
+    width: 13em;
+    margin-left: -14.5em;
     text-align: right;
     list-style-type: none;
   }
@@ -200,8 +208,9 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: 1.75em;
 }
 h1 {
+  line-height: 1;
   font-size: 2em;
-  margin-top: 0
+  margin: 0 0 .25em 0
 }
 h2 {
   font-size: 1.75em;
@@ -247,10 +256,43 @@ h3, h4, h5, h6 {
   font-size: 1.1em;
   width: 100%;
 }
+.feed {
+  text-align: left
+}
 .post-item {
+  min-width: 15em;
   max-width: 20em;
-  display: table-cell;
-  padding: 0 1em 1em 0
+  display: inline-block;
+  margin: 0 1em 1em 0;
+  vertical-align: top;
+}
+@media (max-width: 70em) {
+  .post-item {
+    width: 31%;
+    margin-right: 1%
+  }
+}
+@media (max-width: 55em) {
+  .post-item {
+    width: 48%
+  }
+}
+@media (max-width: 35em) {
+  .post-item {
+    width: 98%;
+    min-width: auto;
+    display: block;
+    margin: 0 auto 1em auto
+  }
+  .feed h1 {
+    display: block;
+    width: 100%;
+    max-width: 20em;
+    margin: 0 auto
+  }
+  .feed, .front-main .container {
+    padding: .5em
+  }
 }
 .other-projects .post-item {
   padding: 0 1em 0 0
@@ -349,29 +391,14 @@ hr {
   display: none
 }
 @media (max-width: 768px) {
-  .front-main {
-    margin: 1.5em 0 .3em 0
+  .front-main .container {
+    background-image: none
+  }
+  .front-main .content {
+    min-height: 100%;
   }
   .main {
     margin: 1.5em .6em 3.875em .6em
-  }
-  .front-posts ul {
-    margin: 0.2em 0.4em 0.15em 0.4em;
-    display: none
-  }
-  .front-posts .mobile-show a {
-    padding: .35em .5em
-  }
-  .front-main .mobile-show {
-    cursor: pointer;
-    outline: none;
-    padding: 0;
-    border: none;
-    font: inherit;
-    color: inherit;
-    background: none;
-    display: inline-block;
-    margin: .75em 0 0 2em;
   }
   .front-posts img {
     height: 75vw
@@ -479,4 +506,8 @@ hr {
   margin-top: -24px;
   position: absolute;
   cursor: pointer;
+}
+code {
+  padding: 0 .3em;
+  background: rgba(255,255,255,.1)
 }

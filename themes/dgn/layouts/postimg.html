@@ -1,0 +1,16 @@
+{{ $original := .Page.Resources.GetMatch (.Get 0) }}
+{{ $config := imageConfig (printf "content/%s/%s" .Page.Dir $original.Name) }}
+{{ $resolutions := split "320 640" " " }}
+{{ $.Scratch.Set "multiplier" 0.57 }}
+{{ with $original }}
+    {{ range $resolutions }}
+        {{ if lt . $config.Width }}
+            {{ $.Scratch.Add "resize" ($original.Fill (printf "%vx%v q90" . (mul . 2))).Permalink }}
+            {{ $.Scratch.Add "resize" (printf " %vw, \n" .) }}
+        {{end}}
+    {{end}}
+{{end}}
+
+<a href="{{$original.Permalink}}">
+    TEST
+</a>

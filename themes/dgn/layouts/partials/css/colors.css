@@ -29,7 +29,7 @@ a {
     color: {{ .Param "colors.trivial" }}
 }
 
-.front-main .container {
+.dark {
     background-color: {{ .Param "colors.background_dark" }};
 }
 
