@@ -38,7 +38,10 @@
             {{- else }}
                 <div class="markdown">
                     {{ .Content }}
-                    <p><a href="https://github.com/deadgamenews/deadgamenews.org-dev/edit/master/{{ .Dir | replaceRE "\\\\" "/" }}index.md">Edit this page on Github</a></p>
+                    <p><a href="https://github.com/deadgamenews/deadgamenews.org-dev/edit/master/content/{{ .Dir | replaceRE "\\\\" "/" }}index.md">Edit this page on Github</a>
+                    <br>
+                    <a href="https://github.com/deadgamenews/deadgamenews.org-dev/blob/master/content/{{ .Dir | replaceRE "\\\\" "/" }}index.md">View this page on Github</a></p>
+                    <p>(NOTE: Which one of these two links should I keep?)</p>
                 </div>
             {{- end }}
         </main>
