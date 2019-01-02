@@ -1,4 +1,4 @@
-baseurl = "https://deadgamenews.org/"
+baseurl = "https://deadgamenews-dev.netlify.com/"
 theme = "dgn"
 builddrafts = true
 canonifyurls = true
@@ -10,6 +10,11 @@ publishdir = "public"
 title = "Dead Game News"
 author = ""
 pluralizelisttitles = false
+
+[taxonomies]
+  publisher = "publishers"
+  developer = "developers"
+  status = "status"
 
 [permalinks]
 dead = "/:title/"
